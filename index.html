@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>actingo menü</title>
+    <title>actingo menu</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -19,11 +19,17 @@
 
         /* Üstteki Navbar */
         .navbar {
-            background-color: #1a1a1a;
+            background-color: #90ee90; /* Açık yeşil */
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 10px; /* Üstten daha az boşluk */
+            width: 90%; /* Kutu genişliği */
+            max-width: 1000px; /* Maksimum genişlik küçültüldü */
+            left: 50%; /* Ortaya hizalama */
+            transform: translateX(-50%); /* Ortaya hizalama */
             z-index: 1000;
+            border-radius: 8px; /* Köşeler biraz küçültüldü */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Gölge küçültüldü */
+            padding: 5px; /* İç boşluk küçültüldü */
         }
 
         .navbar ul, .footer ul {
@@ -37,10 +43,10 @@
 
         .dropdown-btn {
             display: block;
-            color: white;
-            padding: 12px 20px;
+            color: #333; /* Okunaklı renk */
+            padding: 6px 10px; /* Padding küçültüldü */
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px; /* Yazı boyutu küçültüldü */
             font-weight: 600;
             background: none;
             border: none;
@@ -49,7 +55,7 @@
         }
 
         .dropdown-btn:hover {
-            background-color: #444;
+            background-color: #78cc78; /* Hafif koyu yeşil hover efekti */
         }
 
         .dropdown {
@@ -59,18 +65,36 @@
         .dropdown-content {
             display: none; /* Varsayılan olarak kapalı */
             position: absolute;
-            left: 0;
             top: 100%;
             background-color: #fff;
-            width: 900px;
-            max-height: calc(100vh - 50px); /* Ekran yüksekliğinden navbar'ı çıkar */
+            width: 600px; /* Menü genişliği küçültüldü */
+            max-height: calc(100vh - 50px); /* Üst boşluk ve navbar dikkate alınarak */
             overflow-y: auto; /* Menü içinde kaydırma */
-            padding: 10px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            padding: 5px; /* Padding küçültüldü */
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3); /* Gölge küçültüldü */
             z-index: 1;
-            border-radius: 5px;
+            border-radius: 4px; /* Köşeler küçültüldü */
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 5px; /* Kategoriler arası boşluk küçültüldü */
+        }
+
+        /* Profesyoneller menüsü için özel stil */
+        .dropdown.professionals .dropdown-content {
+            left: 0; /* Varsayılan olarak sola hizalı */
+            width: 600px; /* Sabit genişlik küçültüldü */
+            max-width: calc(100vw - 20px); /* Tarayıcı genişliğinden kenar boşlukları */
+            transform: none;
+        }
+
+        /* Tarayıcı genişliği menüden küçükse */
+        @media (max-width: 620px) {
+            .dropdown.professionals .dropdown-content {
+                left: 50%; /* Ortaya kaydır */
+                transform: translateX(-50%); /* Ortaya hizalama */
+                width: auto; /* Genişlik otomatik */
+                max-width: calc(100vw - 20px); /* Tarayıcı sınırları içinde */
+                min-width: 200px; /* Minimum genişlik küçültüldü */
+            }
         }
 
         .dropdown:hover .dropdown-content {
@@ -84,13 +108,13 @@
             left: 0;
             top: 100%;
             background-color: #fff;
-            width: 250px;
-            max-height: calc(100vh - 50px); /* Ekran yüksekliğinden navbar'ı çıkar */
+            width: 180px; /* Genişlik küçültüldü */
+            max-height: calc(100vh - 50px); /* Üst boşluk ve navbar dikkate alınarak */
             overflow-y: auto; /* Menü içinde kaydırma */
-            padding: 5px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            padding: 3px; /* Padding küçültüldü */
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
             z-index: 1;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
         .dropdown:hover .nedir-content {
@@ -102,18 +126,18 @@
         }
 
         .category {
-            flex: 1 1 200px;
+            flex: 1 1 150px; /* Kategori genişliği küçültüldü */
             background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 5px; /* Padding küçültüldü */
+            border-radius: 3px; /* Köşeler küçültüldü */
             border: 1px solid #ddd;
         }
 
         .category-title {
-            font-size: 16px;
+            font-size: 13px; /* Yazı boyutu küçültüldü */
             font-weight: 600;
             color: #333;
-            margin-bottom: 5px;
+            margin-bottom: 2px; /* Boşluk küçültüldü */
         }
 
         .category-items {
@@ -121,27 +145,27 @@
         }
 
         .category-items li {
-            margin: 4px 0;
+            margin: 1px 0; /* Boşluk küçültüldü */
         }
 
         .category-items a {
             color: #666;
             text-decoration: none;
-            font-size: 13px;
+            font-size: 11px; /* Yazı boyutu küçültüldü */
             display: block;
-            padding: 3px 8px;
+            padding: 2px 4px; /* Padding küçültüldü */
             transition: background-color 0.2s, color 0.2s;
         }
 
         .category-items a:hover {
             background-color: #90ee90; /* Açık yeşil highlight */
             color: #000;
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
         /* Ana içerik için 4000px boşluk */
         .main-content {
-            margin-top: 50px; /* Navbar'ın altında yer açar */
+            margin-top: 50px; /* Navbar'ın altında yer açar, küçültüldü */
             height: 4000px; /* 4000px boşluk */
             background-color: #f5f5f5; /* Görünür olsun diye renk */
         }
@@ -150,11 +174,18 @@
         .footer {
             background-color: #1a1a1a;
             width: 100%;
-            padding: 20px 0;
+            padding: 10px 0; /* Padding küçültüldü */
         }
 
         /* Mobil uyumluluk için medya sorguları */
         @media (max-width: 768px) {
+            .navbar {
+                width: 100%; /* Mobilde tam genişlik */
+                top: 5px; /* Mobilde daha az üst boşluk */
+                border-radius: 0; /* Mobilde köşeler düz */
+                padding: 3px; /* Padding küçültüldü */
+            }
+
             .navbar ul, .footer ul {
                 flex-direction: column; /* Mobil için alt alta */
             }
@@ -162,34 +193,40 @@
             .dropdown-btn {
                 width: 100%;
                 text-align: left;
-                padding: 10px 15px;
+                padding: 5px 10px; /* Padding küçültüldü */
             }
 
             .dropdown-content, .nedir-content {
-                position: absolute; /* Mobilde de absolute, ama kaydırılabilir */
+                position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                max-height: calc(100vh - 50px); /* Ekran yüksekliğine göre sınır */
+                max-height: calc(100vh - 40px); /* Mobilde üst boşluk ve navbar dikkate alınarak */
                 overflow-y: auto; /* Menü içinde kaydırma */
-                box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+                box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
                 border-radius: 0;
-                padding: 5px;
+                padding: 3px; /* Padding küçültüldü */
                 display: none; /* Varsayılan kapalı */
-                background-color: #fff; /* Mobil için beyaz arka plan */
+                background-color: #fff;
+            }
+
+            .dropdown.professionals .dropdown-content {
+                left: 0;
+                transform: none;
+                width: 100%;
             }
 
             .dropdown:hover .dropdown-content, .dropdown:hover .nedir-content {
-                display: block; /* Şimdilik hover, tıklama için JS gerekebilir */
+                display: block; /* Hover ile açılır */
             }
 
             .category {
                 flex: 1 1 100%; /* Mobil için tam genişlik */
-                margin-bottom: 10px;
+                margin-bottom: 5px; /* Boşluk küçültüldü */
             }
 
             .main-content {
-                margin-top: 0; /* Mobil için üst boşluk kaldırılır */
+                margin-top: 40px; /* Mobilde üst boşluk küçültüldü */
             }
         }
     </style>
@@ -198,7 +235,7 @@
     <!-- Üstteki Navbar -->
     <div class="navbar">
         <ul>
-            <li class="dropdown BRA">
+            <li class="dropdown">
                 <button class="dropdown-btn">Nedir?</button>
                 <div class="nedir-content">
                     <div class="category">
@@ -223,7 +260,7 @@
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">İçerik Üreticileri - Influencerlar</div>
+                        <div class="category-title">İçerik Üreticileri</div>
                         <ul class="category-items">
                             <li><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
                             <li><a href="#">Yayıncı</a></li>
@@ -231,7 +268,7 @@
                     </div>
                 </div>
             </li>
-            <li class="dropdown">
+            <li class="dropdown professionals">
                 <button class="dropdown-btn">Profesyoneller ▼</button>
                 <div class="dropdown-content">
                     <div class="category">
@@ -245,7 +282,7 @@
                     <div class="category">
                         <div class="category-title">Yaratıcı ve Planlamacı</div>
                         <ul class="category-items">
-                            <li><a href="#">Yazarlar Senaristler Reklam Yazarı</a></li>
+                            <li><a href="#">Yazarlar Senaristler</a></li>
                             <li><a href="#">Sanat Yönetmeni</a></li>
                             <li><a href="#">Etkinlik Organizatörü</a></li>
                             <li><a href="#">Kreatif Direktör</a></li>
@@ -270,8 +307,8 @@
                         <div class="category-title">Müzik ve Ses</div>
                         <ul class="category-items">
                             <li><a href="#">Besteci - Aranjör</a></li>
-                            <li><a href="#">Ses Mühendisi / Tasarımcı</a></li>
-                            <li><a href="#">Ses Kayıtçısı / Miksajcısı</a></li>
+                            <li><a href="#">Ses Mühendisi</a></li>
+                            <li><a href="#">Ses Kayıtçısı</a></li>
                         </ul>
                     </div>
                     <div class="category">
@@ -282,8 +319,8 @@
                             <li><a href="#">Görüntü Yönetmeni</a></li>
                             <li><a href="#">Kamera Operatörü</a></li>
                             <li><a href="#">Kamera Asistanı</a></li>
-                            <li><a href="#">Işıkçı ve Işık Tasarımcısı</a></li>
-                            <li><a href="#">Set Çalışanı ve Amiri</a></li>
+                            <li><a href="#">Işıkçı ve Tasarımcı</a></li>
+                            <li><a href="#">Set Çalışanı</a></li>
                             <li><a href="#">Prodüksiyon Asistanı</a></li>
                             <li><a href="#">Lokasyon Yöneticisi</a></li>
                             <li><a href="#">Teknik Yönetmen</a></li>
@@ -292,19 +329,19 @@
                     <div class="category">
                         <div class="category-title">Post-Prodüksiyon</div>
                         <ul class="category-items">
-                            <li><a href="#">Post-Prodüksiyon Yönetmeni</a></li>
+                            <li><a href="#">Post-Prodüksiyon Yön.</a></li>
                             <li><a href="#">Kurgucu</a></li>
-                            <li><a href="#">Görsel Efekt (VFX) Uzmanı</a></li>
+                            <li><a href="#">Görsel Efekt Uzmanı</a></li>
                             <li><a href="#">Animatör</a></li>
                             <li><a href="#">Renk Düzenleme Uzmanı</a></li>
-                            <li><a href="#">Ses Efekt ve Final Miksaj Uzmanı</a></li>
+                            <li><a href="#">Ses Efekt Uzmanı</a></li>
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">Yazılım, Programlama ve Geliştirme</div>
+                        <div class="category-title">Yazılım ve Geliştirme</div>
                         <ul class="category-items">
                             <li><a href="#">Web Sitesi Yazılımcısı</a></li>
-                            <li><a href="#">Mobil Uygulama Yazılımcısı</a></li>
+                            <li><a href="#">Mobil Uyg. Yazılımcısı</a></li>
                             <li><a href="#">Yapay Zeka Geliştirici</a></li>
                             <li><a href="#">Yazılımcı</a></li>
                             <li><a href="#">SEO Uzmanları</a></li>
@@ -319,7 +356,7 @@
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">Muhasebe ve Vergisel</div>
+                        <div class="category-title">Muhasebe ve Vergi</div>
                         <ul class="category-items">
                             <li><a href="#">Muhasebe Uzmanı</a></li>
                             <li><a href="#">Vergi Uzmanı</a></li>
@@ -392,7 +429,7 @@
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">İçerik Üreticileri - Influencerlar</div>
+                        <div class="category-title">İçerik Üreticileri</div>
                         <ul class="category-items">
                             <li><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
                             <li><a href="#">Yayıncı</a></li>
@@ -400,7 +437,7 @@
                     </div>
                 </div>
             </li>
-            <li class="dropdown">
+            <li class="dropdown professionals">
                 <button class="dropdown-btn">Profesyoneller ▼</button>
                 <div class="dropdown-content">
                     <div class="category">
@@ -414,7 +451,7 @@
                     <div class="category">
                         <div class="category-title">Yaratıcı ve Planlamacı</div>
                         <ul class="category-items">
-                            <li><a href="#">Yazarlar Senaristler Reklam Yazarı</a></li>
+                            <li><a href="#">Yazarlar Senaristler</a></li>
                             <li><a href="#">Sanat Yönetmeni</a></li>
                             <li><a href="#">Etkinlik Organizatörü</a></li>
                             <li><a href="#">Kreatif Direktör</a></li>
@@ -439,8 +476,8 @@
                         <div class="category-title">Müzik ve Ses</div>
                         <ul class="category-items">
                             <li><a href="#">Besteci - Aranjör</a></li>
-                            <li><a href="#">Ses Mühendisi / Tasarımcı</a></li>
-                            <li><a href="#">Ses Kayıtçısı / Miksajcısı</a></li>
+                            <li><a href="#">Ses Mühendisi</a></li>
+                            <li><a href="#">Ses Kayıtçısı</a></li>
                         </ul>
                     </div>
                     <div class="category">
@@ -451,8 +488,8 @@
                             <li><a href="#">Görüntü Yönetmeni</a></li>
                             <li><a href="#">Kamera Operatörü</a></li>
                             <li><a href="#">Kamera Asistanı</a></li>
-                            <li><a href="#">Işıkçı ve Işık Tasarımcısı</a></li>
-                            <li><a href="#">Set Çalışanı ve Amiri</a></li>
+                            <li><a href="#">Işıkçı ve Tasarımcı</a></li>
+                            <li><a href="#">Set Çalışanı</a></li>
                             <li><a href="#">Prodüksiyon Asistanı</a></li>
                             <li><a href="#">Lokasyon Yöneticisi</a></li>
                             <li><a href="#">Teknik Yönetmen</a></li>
@@ -461,19 +498,19 @@
                     <div class="category">
                         <div class="category-title">Post-Prodüksiyon</div>
                         <ul class="category-items">
-                            <li><a href="#">Post-Prodüksiyon Yönetmeni</a></li>
+                            <li><a href="#">Post-Prodüksiyon Yön.</a></li>
                             <li><a href="#">Kurgucu</a></li>
-                            <li><a href="#">Görsel Efekt (VFX) Uzmanı</a></li>
+                            <li><a href="#">Görsel Efekt Uzmanı</a></li>
                             <li><a href="#">Animatör</a></li>
                             <li><a href="#">Renk Düzenleme Uzmanı</a></li>
-                            <li><a href="#">Ses Efekt ve Final Miksaj Uzmanı</a></li>
+                            <li><a href="#">Ses Efekt Uzmanı</a></li>
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">Yazılım, Programlama ve Geliştirme</div>
+                        <div class="category-title">Yazılım ve Geliştirme</div>
                         <ul class="category-items">
                             <li><a href="#">Web Sitesi Yazılımcısı</a></li>
-                            <li><a href="#">Mobil Uygulama Yazılımcısı</a></li>
+                            <li><a href="#">Mobil Uyg. Yazılımcısı</a></li>
                             <li><a href="#">Yapay Zeka Geliştirici</a></li>
                             <li><a href="#">Yazılımcı</a></li>
                             <li><a href="#">SEO Uzmanları</a></li>
@@ -488,7 +525,7 @@
                         </ul>
                     </div>
                     <div class="category">
-                        <div class="category-title">Muhasebe ve Vergisel</div>
+                        <div class="category-title">Muhasebe ve Vergi</div>
                         <ul class="category-items">
                             <li><a href="#">Muhasebe Uzmanı</a></li>
                             <li><a href="#">Vergi Uzmanı</a></li>
