@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>actingo menu</title>
+    <title>Kompakt Açılır Menü - Kesin Düzeltmeler</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -21,20 +21,20 @@
         .navbar {
             background-color: #90ee90; /* Açık yeşil */
             position: fixed;
-            top: 10px; /* Üstten daha az boşluk */
-            width: 90%; /* Kutu genişliği */
-            max-width: 1000px; /* Maksimum genişlik küçültüldü */
-            left: 50%; /* Ortaya hizalama */
-            transform: translateX(-50%); /* Ortaya hizalama */
+            top: 10px;
+            width: 90%;
+            max-width: 1000px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
-            border-radius: 8px; /* Köşeler biraz küçültüldü */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Gölge küçültüldü */
-            padding: 5px; /* İç boşluk küçültüldü */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 5px;
         }
 
         .navbar ul, .footer ul {
             list-style-type: none;
-            display: flex; /* Yan yana menü */
+            display: flex;
         }
 
         .navbar > ul > li, .footer > ul > li {
@@ -43,10 +43,10 @@
 
         .dropdown-btn {
             display: block;
-            color: #333; /* Okunaklı renk */
-            padding: 6px 10px; /* Padding küçültüldü */
+            color: #333;
+            padding: 6px 10px;
             text-decoration: none;
-            font-size: 14px; /* Yazı boyutu küçültüldü */
+            font-size: 14px;
             font-weight: 600;
             background: none;
             border: none;
@@ -55,7 +55,7 @@
         }
 
         .dropdown-btn:hover {
-            background-color: #78cc78; /* Hafif koyu yeşil hover efekti */
+            background-color: #78cc78;
         }
 
         .dropdown {
@@ -63,81 +63,106 @@
         }
 
         .dropdown-content {
-            display: none; /* Varsayılan olarak kapalı */
+            display: none;
             position: absolute;
             top: 100%;
             background-color: #fff;
-            width: 600px; /* Menü genişliği küçültüldü */
-            max-height: calc(100vh - 50px); /* Üst boşluk ve navbar dikkate alınarak */
-            overflow-y: auto; /* Menü içinde kaydırma */
-            padding: 5px; /* Padding küçültüldü */
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.3); /* Gölge küçültüldü */
+            width: 700px; /* Genişlik artırıldı */
+            max-height: calc(100vh - 50px);
+            overflow-y: auto;
+            padding: 5px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
             z-index: 1;
-            border-radius: 4px; /* Köşeler küçültüldü */
+            border-radius: 4px;
             flex-wrap: wrap;
-            gap: 5px; /* Kategoriler arası boşluk küçültüldü */
+            gap: 5px;
         }
 
-        /* Profesyoneller menüsü için özel stil */
+        /* Profesyoneller menüsü */
         .dropdown.professionals .dropdown-content {
-            left: 0; /* Varsayılan olarak sola hizalı */
-            width: 600px; /* Sabit genişlik küçültüldü */
-            max-width: calc(100vw - 20px); /* Tarayıcı genişliğinden kenar boşlukları */
+            left: 0;
+            width: 700px; /* Genişlik artırıldı, taşma azalacak */
+            max-width: calc(100vw - 20px);
             transform: none;
+            overflow-x: auto; /* Yatay taşma için kaydırma */
+            white-space: nowrap; /* Kategoriler tek satırda */
         }
 
-        /* Tarayıcı genişliği menüden küçükse */
-        @media (max-width: 620px) {
-            .dropdown.professionals .dropdown-content {
-                left: 50%; /* Ortaya kaydır */
-                transform: translateX(-50%); /* Ortaya hizalama */
-                width: auto; /* Genişlik otomatik */
-                max-width: calc(100vw - 20px); /* Tarayıcı sınırları içinde */
-                min-width: 200px; /* Minimum genişlik küçültüldü */
-            }
+        .dropdown.professionals .dropdown-content .category {
+            flex: 0 0 180px; /* Kutu genişliği artırıldı */
+            white-space: normal; /* İçerik normal akışta */
         }
 
+/* Satır 97 */
+.dropdown.companies .dropdown-content {
+    left: 0;
+    width: 300px;
+    max-width: calc(100vw - 20px);
+    transform: none;
+    display: none;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+/* Satır 106 */
+.dropdown.companies .dropdown-content .category {
+    width: 100%;
+    flex: none;
+}
+
+/* Satır 111 */
+.dropdown.companies .dropdown-content .category-items {
+    display: block;
+}
+
+/* Satır 115 */
+.dropdown.companies .dropdown-content .category-items li {
+    display: block;
+    width: 100%;
+}
+
+        /* Hover ile açılma */
         .dropdown:hover .dropdown-content {
-            display: flex; /* Hover ile açılır */
+            display: flex;
         }
 
         /* "Nedir?" için özel stil */
         .nedir-content {
-            display: none; /* Kapalı olarak başlasın */
+            display: none;
             position: absolute;
             left: 0;
             top: 100%;
             background-color: #fff;
-            width: 180px; /* Genişlik küçültüldü */
-            max-height: calc(100vh - 50px); /* Üst boşluk ve navbar dikkate alınarak */
-            overflow-y: auto; /* Menü içinde kaydırma */
-            padding: 3px; /* Padding küçültüldü */
+            width: 180px;
+            max-height: calc(100vh - 50px);
+            overflow-y: auto;
+            padding: 3px;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
             z-index: 1;
             border-radius: 4px;
         }
 
         .dropdown:hover .nedir-content {
-            display: block; /* Hover ile açılır */
+            display: block;
         }
 
         .nedir-content .category-items {
-            display: block; /* Alt alta kesin çözüm */
+            display: block;
         }
 
         .category {
-            flex: 1 1 150px; /* Kategori genişliği küçültüldü */
             background-color: #f9f9f9;
-            padding: 5px; /* Padding küçültüldü */
-            border-radius: 3px; /* Köşeler küçültüldü */
+            padding: 5px;
+            border-radius: 3px;
             border: 1px solid #ddd;
         }
 
         .category-title {
-            font-size: 13px; /* Yazı boyutu küçültüldü */
+            font-size: 13px;
             font-weight: 600;
             color: #333;
-            margin-bottom: 2px; /* Boşluk küçültüldü */
+            margin-bottom: 2px;
         }
 
         .category-items {
@@ -145,55 +170,55 @@
         }
 
         .category-items li {
-            margin: 1px 0; /* Boşluk küçültüldü */
+            margin: 1px 0;
         }
 
         .category-items a {
             color: #666;
             text-decoration: none;
-            font-size: 11px; /* Yazı boyutu küçültüldü */
+            font-size: 11px;
             display: block;
-            padding: 2px 4px; /* Padding küçültüldü */
+            padding: 2px 4px;
             transition: background-color 0.2s, color 0.2s;
         }
 
         .category-items a:hover {
-            background-color: #90ee90; /* Açık yeşil highlight */
+            background-color: #90ee90;
             color: #000;
             border-radius: 2px;
         }
 
         /* Ana içerik için 4000px boşluk */
         .main-content {
-            margin-top: 50px; /* Navbar'ın altında yer açar, küçültüldü */
-            height: 4000px; /* 4000px boşluk */
-            background-color: #f5f5f5; /* Görünür olsun diye renk */
+            margin-top: 50px;
+            height: 4000px;
+            background-color: #f5f5f5;
         }
 
         /* Footer */
         .footer {
             background-color: #1a1a1a;
             width: 100%;
-            padding: 10px 0; /* Padding küçültüldü */
+            padding: 10px 0;
         }
 
-        /* Mobil uyumluluk için medya sorguları */
+        /* Mobil uyumluluk */
         @media (max-width: 768px) {
             .navbar {
-                width: 100%; /* Mobilde tam genişlik */
-                top: 5px; /* Mobilde daha az üst boşluk */
-                border-radius: 0; /* Mobilde köşeler düz */
-                padding: 3px; /* Padding küçültüldü */
+                width: 100%;
+                top: 5px;
+                border-radius: 0;
+                padding: 3px;
             }
 
             .navbar ul, .footer ul {
-                flex-direction: column; /* Mobil için alt alta */
+                flex-direction: column;
             }
 
             .dropdown-btn {
                 width: 100%;
                 text-align: left;
-                padding: 5px 10px; /* Padding küçültüldü */
+                padding: 5px 10px;
             }
 
             .dropdown-content, .nedir-content {
@@ -201,12 +226,12 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                max-height: calc(100vh - 40px); /* Mobilde üst boşluk ve navbar dikkate alınarak */
-                overflow-y: auto; /* Menü içinde kaydırma */
+                max-height: calc(100vh - 40px);
+                overflow-y: auto;
                 box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
                 border-radius: 0;
-                padding: 3px; /* Padding küçültüldü */
-                display: none; /* Varsayılan kapalı */
+                padding: 3px;
+                display: none;
                 background-color: #fff;
             }
 
@@ -214,19 +239,31 @@
                 left: 0;
                 transform: none;
                 width: 100%;
+                overflow-x: hidden; /* Mobilde yatay kaydırma yok */
+                white-space: normal; /* Normal akış */
+            }
+
+            .dropdown.companies .dropdown-content {
+                left: 0;
+                transform: none;
+                width: 100%;
             }
 
             .dropdown:hover .dropdown-content, .dropdown:hover .nedir-content {
-                display: block; /* Hover ile açılır */
+                display: block;
             }
 
             .category {
-                flex: 1 1 100%; /* Mobil için tam genişlik */
-                margin-bottom: 5px; /* Boşluk küçültüldü */
+                flex: 1 1 100%;
+                margin-bottom: 5px;
+            }
+
+            .dropdown.professionals .dropdown-content .category {
+                flex: 1 1 100%; /* Mobilde tam genişlik */
             }
 
             .main-content {
-                margin-top: 40px; /* Mobilde üst boşluk küçültüldü */
+                margin-top: 40px;
             }
         }
     </style>
@@ -361,6 +398,28 @@
                             <li><a href="#">Muhasebe Uzmanı</a></li>
                             <li><a href="#">Vergi Uzmanı</a></li>
                             <li><a href="#">Bağımsız Denetmen</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown companies">
+                <button class="dropdown-btn">Şirketler ▼</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <li><a href="#">Yapım-Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">Cast Ajansları</a></li>
+                            <li><a href="#">Oyuncu ve Model Menajerlik</a></li>
+                            <li><a href="#">Ses ve Dublaj Stüdyoları</a></li>
+                            <li><a href="#">Reklam - Dijital - PR - Event</a></li>
+                            <li><a href="#">Sanat ve Eğitim Kurumları</a></li>
+                            <li><a href="#">Oyun Stüdyoları</a></li>
+                            <li><a href="#">Post-Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">TV - Radyo ve Dijital Kanallar</a></li>
+                            <li><a href="#">Ekipman Kiralama Şirketleri</a></li>
+                            <li><a href="#">Fotoğraf - Prodüksiyon Stüdyoları</a></li>
+                            <li><a href="#">Basılı Yayın Şirketleri</a></li>
+                            <li><a href="#">Medya Satın Alma Şirketleri</a></li>
                         </ul>
                     </div>
                 </div>
@@ -530,6 +589,28 @@
                             <li><a href="#">Muhasebe Uzmanı</a></li>
                             <li><a href="#">Vergi Uzmanı</a></li>
                             <li><a href="#">Bağımsız Denetmen</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown companies">
+                <button class="dropdown-btn">Şirketler ▼</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <li><a href="#">Yapım-Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">Cast Ajansları</a></li>
+                            <li><a href="#">Oyuncu ve Model Menajerlik</a></li>
+                            <li><a href="#">Ses ve Dublaj Stüdyoları</a></li>
+                            <li><a href="#">Reklam - Dijital - PR - Event</a></li>
+                            <li><a href="#">Sanat ve Eğitim Kurumları</a></li>
+                            <li><a href="#">Oyun Stüdyoları</a></li>
+                            <li><a href="#">Post-Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">TV - Radyo ve Dijital Kanallar</a></li>
+                            <li><a href="#">Ekipman Kiralama Şirketleri</a></li>
+                            <li><a href="#">Fotoğraf - Prodüksiyon Stüdyoları</a></li>
+                            <li><a href="#">Basılı Yayın Şirketleri</a></li>
+                            <li><a href="#">Medya Satın Alma Şirketleri</a></li>
                         </ul>
                     </div>
                 </div>
