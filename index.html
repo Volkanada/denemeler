@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Büyük Açılır Menü - Yeni Düzen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .navbar > ul > li {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #444;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background-color: #fff;
+            width: 900px; /* Varsayılan genişlik, "Nedir?" için daha dar olacak */
+            padding: 10px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+            border-radius: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        /* "Nedir?" için özel stil */
+        .nedir-content {
+            width: 250px; /* Daha dar bir menü */
+            flex-direction: column; /* Dikey düzen */
+        }
+
+        .category {
+            flex: 1 1 200px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .category-items {
+            list-style-type: none;
+        }
+
+        .category-items li {
+            margin: 4px 0;
+        }
+
+        .category-items a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            padding: 3px 8px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .category-items a:hover {
+            background-color: #90ee90; /* Açık yeşil highlight */
+            color: #000;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="dropdown">
+                <button class="dropdown-btn">Nedir?</button>
+                <div class="dropdown-content nedir-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <li><a href="#">Yetenekler ve Profesyoneller için</a></li>
+                            <li><a href="#">Marka ve Şirketler için</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn">Yetenekler ▼</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <div class="category-title">Sanatçılar</div>
+                        <ul class="category-items">
+                            <li><a href="#">Oyuncu</a></li>
+                            <li><a href="#">Seslendirme Sanatçısı</a></li>
+                            <li><a href="#">Müzisyen</a></li>
+                            <li><a href="#">Vokal</a></li>
+                            <li><a href="#">Dansçı ve Koreograf</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">İçerik Üreticileri - Influencerlar</div>
+                        <ul class="category-items">
+                            <li><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
+                            <li><a href="#">Yayıncı</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn">Profesyoneller ▼</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <div class="category-title">Dijital Pazarlama</div>
+                        <ul class="category-items">
+                            <li><a href="#">Dijital Pazarlama Uzmanı</a></li>
+                            <li><a href="#">Sosyal Medya Yöneticisi</a></li>
+                            <li><a href="#">Pazarlama Yöneticisi</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Yaratıcı ve Planlamacı</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yazarlar Senaristler Reklam Yazarı</a></li>
+                            <li><a href="#">Sanat Yönetmeni</a></li>
+                            <li><a href="#">Etkinlik Organizatörü</a></li>
+                            <li><a href="#">Kreatif Direktör</a></li>
+                            <li><a href="#">Stratejik Planlamacı</a></li>
+                            <li><a href="#">Marka Yöneticisi</a></li>
+                            <li><a href="#">Medya Planlamacı</a></li>
+                            <li><a href="#">Editör ve Yayın Yönetmeni</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Görsel Tasarım</div>
+                        <ul class="category-items">
+                            <li><a href="#">Grafik ve Görsel Tasarımcı</a></li>
+                            <li><a href="#">İllüstratör</a></li>
+                            <li><a href="#">Fotoğrafçı</a></li>
+                            <li><a href="#">Sahne Tasarımcısı</a></li>
+                            <li><a href="#">Kostüm Tasarımcısı</a></li>
+                            <li><a href="#">Makyaj ve Saç Stilisti</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Müzik ve Ses</div>
+                        <ul class="category-items">
+                            <li><a href="#">Besteci - Aranjör</a></li>
+                            <li><a href="#">Ses Mühendisi / Tasarımcı</a></li>
+                            <li><a href="#">Ses Kayıtçısı / Miksajcısı</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Çekim ve Prodüksiyon</div>
+                        <ul class="category-items">
+                            <li><a href="#">Prodüktör</a></li>
+                            <li><a href="#">Yönetmen</a></li>
+                            <li><a href="#">Görüntü Yönetmeni</a></li>
+                            <li><a href="#">Kamera Operatörü</a></li>
+                            <li><a href="#">Kamera Asistanı</a></li>
+                            <li><a href="#">Işıkçı ve Işık Tasarımcısı</a></li>
+                            <li><a href="#">Set Çalışanı ve Amiri</a></li>
+                            <li><a href="#">Prodüksiyon Asistanı</a></li>
+                            <li><a href="#">Lokasyon Yöneticisi</a></li>
+                            <li><a href="#">Teknik Yönetmen</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Post-Prodüksiyon</div>
+                        <ul class="category-items">
+                            <li><a href="#">Post-Prodüksiyon Yönetmeni</a></li>
+                            <li><a href="#">Kurgucu</a></li>
+                            <li><a href="#">Görsel Efekt (VFX) Uzmanı</a></li>
+                            <li><a href="#">Animatör</a></li>
+                            <li><a href="#">Renk Düzenleme Uzmanı</a></li>
+                            <li><a href="#">Ses Efekt ve Final Miksaj Uzmanı</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Yazılım, Programlama ve Geliştirme</div>
+                        <ul class="category-items">
+                            <li><a href="#">Web Sitesi Yazılımcısı</a></li>
+                            <li><a href="#">Mobil Uygulama Yazılımcısı</a></li>
+                            <li><a href="#">Yapay Zeka Geliştirici</a></li>
+                            <li><a href="#">Yazılımcı</a></li>
+                            <li><a href="#">SEO Uzmanları</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Danışmanlar</div>
+                        <ul class="category-items">
+                            <li><a href="#">Hukuki Danışman</a></li>
+                            <li><a href="#">Arabulucu</a></li>
+                            <li><a href="#">Avukat</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Muhasebe ve Vergisel</div>
+                        <ul class="category-items">
+                            <li><a href="#">Muhasebe Uzmanı</a></li>
+                            <li><a href="#">Vergi Uzmanı</a></li>
+                            <li><a href="#">Bağımsız Denetmen</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn">Projeler+</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <!-- Buraya alt başlıklar eklenebilir -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn">Magazin+</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <!-- Buraya alt başlıklar eklenebilir -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn">Proje Paylaş &gt;</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <!-- Buraya alt başlıklar eklenebilir -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div style="margin-top: 50px; padding: 20px;">
+        <h1>Hoş Geldiniz</h1>
+        <p>Bu bir test sayfasıdır. Menü yukarıda yer almaktadır.</p>
+    </div>
+</body>
+</html>
