@@ -19,7 +19,7 @@
 
         /* Üstteki Navbar */
         .navbar {
-            background-color: #43d742; /* Açık yeşil */
+            background-color: #90ee90; /* Açık yeşil */
             position: fixed;
             top: 10px;
             width: 90%;
@@ -30,11 +30,14 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             padding: 5px;
+            display: flex;
+            justify-content: space-between;
         }
 
         .navbar ul {
             list-style-type: none;
             display: flex;
+            margin: 0;
         }
 
         .navbar > ul > li {
@@ -58,6 +61,24 @@
             background-color: #78cc78;
         }
 
+        /* Küçük fontlu butonlar için stil */
+        .small-btn {
+            font-size: 12px;
+            padding: 6px 8px;
+        }
+
+        /* Katıl butonu için özel stil */
+        .katil-btn {
+            border: 2px solid #fff; /* Beyaz çerçeve */
+            background-color: #90ee90; /* Navbar ile uyumlu arka plan */
+            padding: 4px 8px; /* Çerçeveyi dikkate alarak padding */
+            border-radius: 4px; /* Yuvarlak köşeler */
+        }
+
+        .katil-btn:hover {
+            background-color: #78cc78; /* Hover efekti */
+        }
+
         .dropdown {
             position: relative;
         }
@@ -67,7 +88,7 @@
             position: absolute;
             top: 100%;
             background-color: #fff;
-            width: 700px; /* Genişlik artırıldı */
+            width: 700px;
             max-height: calc(100vh - 50px);
             overflow-y: auto;
             padding: 5px;
@@ -81,16 +102,16 @@
         /* Profesyoneller menüsü */
         .dropdown.professionals .dropdown-content {
             left: 0;
-            width: 700px; /* Genişlik artırıldı, taşma azalacak */
+            width: 700px;
             max-width: calc(100vw - 20px);
             transform: none;
-            overflow-x: auto; /* Yatay taşma için kaydırma */
-            white-space: nowrap; /* Kategoriler tek satırda */
+            overflow-x: auto;
+            white-space: nowrap;
         }
 
         .dropdown.professionals .dropdown-content .category {
-            flex: 0 0 180px; /* Kutu genişliği artırıldı */
-            white-space: normal; /* İçerik normal akışta */
+            flex: 0 0 180px;
+            white-space: normal;
         }
 
         /* Şirketler menüsü */
@@ -122,22 +143,22 @@
         /* Yetenekler menüsü */
         .dropdown.talents .dropdown-content {
             left: 0;
-            width: 300px; /* Şirketler ile uyumlu dar genişlik */
+            width: 300px;
             max-width: calc(100vw - 20px);
             transform: none;
-            display: none; /* Varsayılan olarak kapalı */
-            flex-direction: column; /* Yukarıdan aşağıya */
-            flex-wrap: nowrap; /* Yan yana olmayacak */
-            align-items: stretch; /* Öğeler tam genişlikte */
+            display: none;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: stretch;
         }
 
         .dropdown.talents .dropdown-content .category {
-            width: 100%; /* Tam genişlik */
-            flex: none; /* Flex etkisini kaldır */
+            width: 100%;
+            flex: none;
         }
 
         .dropdown.talents .dropdown-content .category-items {
-            display: block; /* Alt alta sıralama */
+            display: block;
         }
 
         .dropdown.talents .dropdown-content .category-items li {
@@ -201,10 +222,12 @@
                 top: 5px;
                 border-radius: 0;
                 padding: 3px;
+                flex-direction: column;
             }
 
             .navbar ul {
                 flex-direction: column;
+                width: 100%;
             }
 
             .dropdown-btn {
@@ -231,8 +254,8 @@
                 left: 0;
                 transform: none;
                 width: 100%;
-                overflow-x: hidden; /* Mobilde yatay kaydırma yok */
-                white-space: normal; /* Normal akış */
+                overflow-x: hidden;
+                white-space: normal;
             }
 
             .dropdown.companies .dropdown-content {
@@ -257,7 +280,7 @@
             }
 
             .dropdown.professionals .dropdown-content .category {
-                flex: 1 1 100%; /* Mobilde tam genişlik */
+                flex: 1 1 100%;
             }
 
             .main-content {
@@ -432,8 +455,30 @@
                     </div>
                 </div>
             </li>
+        </ul>
+        <ul>
             <li class="dropdown">
                 <button class="dropdown-btn">Proje Paylaş ></button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <!-- Buraya alt başlıklar eklenebilir -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn small-btn">Giriş+</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <ul class="category-items">
+                            <!-- Buraya alt başlıklar eklenebilir -->
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown">
+                <button class="dropdown-btn small-btn katil-btn">Katıl+</button>
                 <div class="dropdown-content">
                     <div class="category">
                         <ul class="category-items">
