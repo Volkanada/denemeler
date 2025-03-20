@@ -216,7 +216,41 @@
             height: 4000px;
             background-color: #f5f5f5;
         }
+        [data-tooltip] {
+    position: relative;
+}
 
+/* Tooltip stili */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%; /* Metnin altında */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(51, 51, 51, 0.6); /* Transparan koyu gri */
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    white-space: nowrap; /* Tek satırda tutar */
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none; /* Tooltip üzerinde durmak fare olaylarını tetiklemez */
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+/* Menü kutusundan taşmayı sağlamak için üst kapsayıcıya müdahale etmiyoruz */
+.dropdown-content {
+    overflow: visible; /* Menü kutusundan taşmaya izin verir */
+}
         /* Gökkuşağı ve dalgalanma efekti için stil */
 .rainbow-wave a {
     display: inline-block;
@@ -345,12 +379,13 @@
             .trim();
     });
 </script>
+
 <body>
     <!-- Üstteki Navbar -->
     <div class="navbar">
         <ul>
             <li class="dropdown">
-                <button class="dropdown-btn">Projeler+</button>
+                <button data-tooltip="Tüm Projeler Burada"class="dropdown-btn">Projeler+</button>
                 <div class="dropdown-content">
                     <div class="category">
                         <ul class="category-items">
@@ -365,19 +400,19 @@
                     <div class="category">
                         <div class="category-title">Sanatçılar</div>
                         <ul class="category-items">
-                            <li><a href="#">Oyuncu</a></li>
-                            <li><a href="#">Seslendirme Sanatçısı</a></li>
-                            <li><a href="#">Müzisyen</a></li>
-                            <li><a href="#">Vokal</a></li>
-                            <li><a href="#">Dansçı & Koreograf</a></li>
-                            <li><a href="#">Model</a></li>
+                            <li><a href="#"data-tooltip="Kamera Önü, Sunucu, Sahne ve Tiyatro Oyuncusu, Figüran">Oyuncu</a></li>
+                            <li><a href="#"data-tooltip="Dublaj ve Mikrofon Oyuncusu">Seslendirme Sanatçısı</a></li>
+                            <li><a href="#"data-tooltip="Enstrümanist, İcracı, Virtüöz">Müzisyen</a></li>
+                            <li><a href="#"data-tooltip="Şarkıcı, Ses Sanatçısı">Vokal</a></li>
+                            <li><a href="#"data-tooltip="Performans Sanatçısı, Balerin, Balet">Dansçı & Koreograf</a></li>
+                            <li><a href="#"data-tooltip="Manken, Fotomodel, El Mankeni, Fuar Host-Hostesi">Model</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">İçerik Üreticileri</div>
                         <ul class="category-items">
-                            <li><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
-                            <li><a href="#">Yayıncı</a></li>
+                            <li><a href="#"data-tooltip="Influencer, Fenomen, Vlogger, Blogger">Sosyal Medya İçerik Üreticisi</a></li>
+                            <li><a href="#"data-tooltip="Youtube, Twitch, Kick Yayıncısı">Yayıncı</a></li>
                         </ul>
                     </div>
                 </div>
@@ -388,55 +423,58 @@
                     <div class="category">
                         <div class="category-title">Yaratıcı ve Dijital Pazarlama</div>
                         <ul class="category-items">
-                            <li><a href="#">Yazarlar & Senaristler & Editörler</a></li>
-                            <li><a href="#">Pazarlama & Dijital & Sosyal Medya Yöneticisi</a></li>
-                            <li><a href="#">Kreatif Direktör</a></li>
-                            <li><a href="#">Sanat Yönetmeni</a></li>
-                            <li><a href="#">Marka Yöneticisi</a></li>
-                            <li><a href="#">Medya ve Stratejik Planlamacı</a></li>
-                            <li><a href="#">Etkinlik Organizatörü</a></li>
+                            <li><a href="#"data-tooltip="Metin, Reklam, Senaryo, Oyun, İçerik Yazarı, Redaktör">Yazar & Senarist & Editör</a></li>
+                            <li><a href="#"data-tooltip="Marka, Reklam, Topluluk Yöneticisi, İletişim Uzmanı">Pazarlama & Dijital & Sosyal Medya Yöneticisi</a></li>
+                            <li><a href="#"data-tooltip="Yaratıcı Yönetmen, Konsept ve İçerik Direktörü">Kreatif Direktör</a></li>
+                            <li><a href="#"data-tooltip="Tasarım ve Estetik Direktörü">Sanat Yönetmeni</a></li>
+                            <li><a href="#"data-tooltip="Marka Temsilcisi, Direktörü ve Koordinatörü">Marka Yöneticisi</a></li>
+                            <li><a href="#"data-tooltip="Mecra, Süre, Yayın ve Strateji Uzmanı">Medya ve Stratejik Planlamacı</a></li>
+                            <li><a href="#"data-tooltip="Organizasyon ve Event Koordinatörü, Etkinlik Yapımcısı">Etkinlik Organizatörü</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Görsel Tasarım</div>
                         <ul class="category-items">
-                            <li><a href="#">Grafik & Görsel Tasarımcı</a></li>
-                            <li><a href="#">İllüstratör</a></li>
-                            <li><a href="#">2D & 3D Mimari Tasarımcı</a></li>
+                            <li><a href="#"data-tooltip="UI/UX ve Kreatif Tasarımcı, Grafik Sanatçısı">Grafik & Görsel Tasarımcı</a></li>
+                            <li><a href="#"data-tooltip="Konsept ve Görsel Çizeri, Dijital Çizim Sanatçısı">İllüstratör</a></li>
+                            <li><a href="#"data-tooltip="Modelleme Uzmanı, AutoDesk, CAD vb. Operatörü, Animasyon Modelcisi">2D & 3D Model Tasarımcı</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Müzik ve Ses</div>
                         <ul class="category-items">
-                            <li><a href="#">Müzisyen & Besteci & Aranjör</a></li>
-                            <li><a href="#">Ses Mühendisi & Tasarımcısı</a></li>
+                            <li><a href="#"data-tooltip="Prodüktör, Kompozitör, Müzik Yapımcısı">Müzisyen & Besteci & Aranjör</a></li>
+                            <li><a href="#"data-tooltip="Ses, Efekt, Stüdyo, Akustik ve Ses Teknolojileri Uzmanı">Ses Mühendisi & Tasarımcısı</a></li>
                         </ul>
                     </div>
                     <div class="category production">
                         <div class="category-title">Çekim ve Prodüksiyon</div>
                         <ul class="category-items">
-                            <li><a href="#">Prodüktör & Yapımcı</a></li>
-                            <li><a href="#">Yönetmen & Görüntü Yönetmeni</a></li>
-                            <li><a href="#">Kamera Operatörü & Asistanı</a></li>
-                            <li><a href="#">Fotoğrafçı</a></li>
-                            <li><a href="#">Ses Kayıtçısı & Miksajcısı</a></li>
-                            <li><a href="#">Işıkçı & Işık Tasarımcısı</a></li>
-                            <li><a href="#">Set & Reji & Yönetmen Asistanı</a></li>
-                            <li><a href="#">Set & Lokasyon Amiri</a></li>
-                            <li><a href="#">Set Güvenliği & Ulaşım Yetkilisi</a></li>
-                            <li><a href="#">Sahne & Sanat Tasarımcısı</a></li>
-                            <li><a href="#">Kostüm Tasarımcısı</a></li>
-                            <li><a href="#">Makyaj & Saç Stilisti</a></li>
+                            <li><a href="#"data-tooltip="İçerik Yapımcısı, Kreatif ve Ajans Prodüktörü, Medya Yapımcısı">Prodüktör & Yapımcı</a></li>
+                            <li><a href="#"data-tooltip="Rejisör, Yaratıcı Yönetmen, Film/Sahne ve Proje Direktörü">Yönetmen</a></li>
+                            <li><a href="#"data-tooltip="Sinematograf, DOP, Görsel ve Işık Yönetmeni">Görüntü Yönetmeni</a></li>
+                            <li><a href="#"data-tooltip="Yardımcı Yönetmen, Reji Asistanı, Ekip Koordinatörü">Set & Reji & Yönetmen Asistanı</a></li>
+                            <li><a href="#"data-tooltip="Kameraman, Focus Puller, Teknisyen ve Görüntü Ekibi ">Kamera Operatörü & Asistanı</a></li>
+                            <li><a href="#"data-tooltip="Set, Stil, Moda ve Stüdyo Fotoğrafçısı">Fotoğrafçı</a></li>
+                            <li><a href="#"data-tooltip="Boom ve Saha Ses Operatörü, Kayıtçı ve Ses Yöneticisi">Ses Kayıtçısı & Miksajcısı</a></li>
+                            <li><a href="#"data-tooltip="Işık Şefi, Gaffer, Best Boy">Işıkçı & Işık Tasarımcısı</a></li>
+                           
+                            <li><a href="#"data-tooltip="Mekan Yöneticisi, Set Düzenleyici, Organizatör">Set & Lokasyon Amiri</a></li>
+                            
+                            <li><a href="#"data-tooltip="Dekor ve Estetik Uzmanı, Sanat Ekibi Çalışanı">Sahne & Sanat Tasarımcısı</a></li>
+                            <li><a href="#"data-tooltip="Karakter, Stil, Sahne, Dönem, Kostüm Tasarımcısı">Kostüm Tasarımcısı</a></li>
+                            <li><a href="#"data-tooltip="Makyöz, Kuaför, Saç Stilistleri, İmaj Tasarımcısı">Makyaj & Saç Stilisti</a></li>
+                            <li><a href="#"data-tooltip="Güvenlik Görevlisi, Şoför, Karavan ve Jenaratör Uzmanı">Set Güvenliği & Ulaşım Yetkilisi</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Post-Prodüksiyon</div>
                         <ul class="category-items">
-                            <li><a href="#">Post-Prodüksiyon Yöneticisi</a></li>
-                            <li><a href="#">Kurgu Operatörü</a></li>
-                            <li><a href="#">Görsel Efekt Uzmanı</a></li>
-                            <li><a href="#">Animatör</a></li>
-                            <li><a href="#">Renk Düzenleme Uzmanı</a></li>
+                            <li><a href="#"data-tooltip="Post Süreci Direktörü">Post-Prodüksiyon Yöneticisi</a></li>
+                            <li><a href="#"data-tooltip="Premier, Final Cut, Davinci vb. Operatörleri">Kurgu Operatörü</a></li>
+                            <li><a href="#"data-tooltip="After Effects, Cinema 4D, nuke vb. Operatörleri">Görsel Efekt Uzmanı</a></li>
+                            <li><a href="#"data-tooltip="After Effects, Unity vb. Operatörleri">Animatör</a></li>
+                            <li><a href="#"data-tooltip="Davinci, Final Cut vb. Opperatörü">Renk Düzenleme Uzmanı</a></li>
                             <li><a href="#">Ses Efekt & Miksaj Uzmanı</a></li>
                         </ul>
                     </div>
@@ -535,7 +573,7 @@
                             <li><a href="#">Oyuncu & Model Menajerlik Şirketleri</a></li>
                             <li><a href="#">Ses & Dublaj Stüdyoları</a></li>
                             <li><a href="#">Reklam & Dijital & PR & Event Ajansları</a></li>
-                            <li class="rainbow-wave"><a href="#">Yapay Zeka Şirketleri</a></li>
+                            <li class="rainbow-wave"><a href="#" data-tooltip="AI destekli şirketler">Yapay Zeka Şirketleri</a></li>
                             <li><a href="#">Sanat ve Eğitim Kurumları</a></li>
                             <li><a href="#">Oyun Stüdyoları</a></li>
                             <li><a href="#">Post-Prodüksiyon Şirketleri</a></li>
