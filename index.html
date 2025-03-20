@@ -217,6 +217,41 @@
             background-color: #f5f5f5;
         }
 
+        /* Gökkuşağı ve dalgalanma efekti için stil */
+.rainbow-wave a {
+    display: inline-block;
+    animation: rainbow 3s infinite linear; /* Gökkuşağı renk değişimi */
+}
+
+.rainbow-wave a span {
+    display: inline-block;
+    animation: wave 1.5s infinite; /* Dalgalanma efekti */
+}
+
+/* Harfler için dalgalanma zaman farkı */
+.rainbow-wave a span:nth-child(1) { animation-delay: 0.1s; }
+.rainbow-wave a span:nth-child(2) { animation-delay: 0.2s; }
+.rainbow-wave a span:nth-child(3) { animation-delay: 0.3s; }
+.rainbow-wave a span:nth-child(4) { animation-delay: 0.4s; }
+.rainbow-wave a span:nth-child(5) { animation-delay: 0.5s; }
+.rainbow-wave a span:nth-child(6) { animation-delay: 0.6s; }
+.rainbow-wave a span:nth-child(7) { animation-delay: 0.7s; }
+.rainbow-wave a span:nth-child(8) { animation-delay: 0.8s; }
+.rainbow-wave a span:nth-child(9) { animation-delay: 0.9s; }
+.rainbow-wave a span:nth-child(10) { animation-delay: 1.0s; }
+
+/* Gökkuşağı renk animasyonu */
+@keyframes rainbow {
+    0% { color: #ff0000; } /* Kırmızı */
+    20% { color: #ff7f00; } /* Turuncu */
+    40% { color: #ffff00; } /* Sarı */
+    60% { color: #00ff00; } /* Yeşil */
+    80% { color: #0000ff; } /* Mavi */
+    100% { color: #ff00ff; } /* Mor */
+}
+
+
+
         @media (max-width: 768px) {
             .navbar {
                 width: 100%;
@@ -297,6 +332,15 @@
         }
     </style>
 </head>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const rainbowLink = document.querySelector(".rainbow-wave a");
+        const text = rainbowLink.textContent;
+        rainbowLink.innerHTML = text.split("").map(char => `<span>${char}</span>`).join("");
+    });
+</script>
+
 <body>
     <!-- Üstteki Navbar -->
     <div class="navbar">
@@ -487,7 +531,7 @@
                             <li><a href="#">Oyuncu & Model Menajerlik Şirketleri</a></li>
                             <li><a href="#">Ses & Dublaj Stüdyoları</a></li>
                             <li><a href="#">Reklam & Dijital & PR & Event Ajansları</a></li>
-                            <li><a href="#">Yapay Zeka Şirketleri</a></li>
+                            <li class="rainbow-wave"><a href="#">Yapay Zeka Şirketleri</a></li>
                             <li><a href="#">Sanat ve Eğitim Kurumları</a></li>
                             <li><a href="#">Oyun Stüdyoları</a></li>
                             <li><a href="#">Post-Prodüksiyon Şirketleri</a></li>
@@ -537,7 +581,8 @@
                 <div class="dropdown-content">
                     <div class="category">
                         <ul class="category-items">
-                            <li><a href="#">YETENEK & PROFESYONEL</a></li>
+                            <li><a href="#">YETENEK+</a></li>
+                            <li><a href="#">PROFESYONEL+</a></li>
                             <li><a href="#">ŞİRKET+</a></li>
                             <li><a href="#">MARKA+</a></li>
                         </ul>
