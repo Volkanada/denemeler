@@ -337,10 +337,14 @@
     document.addEventListener("DOMContentLoaded", function() {
         const rainbowLink = document.querySelector(".rainbow-wave a");
         const text = rainbowLink.textContent;
-        rainbowLink.innerHTML = text.split("").map(char => `<span>${char}</span>`).join("");
+        // Metni kelimelere ayır ve her kelimeyi harflere bölerek boşlukları koru
+        const words = text.split(" ");
+        rainbowLink.innerHTML = words
+            .map(word => word.split("").map(char => `<span>${char}</span>`).join("") + " ")
+            .join("")
+            .trim();
     });
 </script>
-
 <body>
     <!-- Üstteki Navbar -->
     <div class="navbar">
