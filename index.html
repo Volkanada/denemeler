@@ -96,28 +96,32 @@
             gap: 5px;
         }
 
-        .dropdown.professionals .dropdown-content {
+        .dropdown.professionals .dropdown-content,
+        .dropdown.ai-professionals .dropdown-content {
             left: 0;
-            width: 450px; /* Yetenekler gibi dar genişlik */
+            width: 450px;
             max-width: calc(100vw - 20px);
             transform: none;
             display: none;
-            flex-direction: column; /* Kategoriler alt alta */
+            flex-direction: column;
             flex-wrap: nowrap;
             align-items: stretch;
-            overflow-x: hidden; /* Yatay taşma yok */
+            overflow-x: hidden;
         }
 
-        .dropdown.professionals .dropdown-content .category {
+        .dropdown.professionals .dropdown-content .category,
+        .dropdown.ai-professionals .dropdown-content .category {
             width: 100%;
             flex: none;
         }
 
-        .dropdown.professionals .dropdown-content .category-items {
+        .dropdown.professionals .dropdown-content .category-items,
+        .dropdown.ai-professionals .dropdown-content .category-items {
             display: block;
         }
 
-        .dropdown.professionals .dropdown-content .category-items li {
+        .dropdown.professionals .dropdown-content .category-items li,
+        .dropdown.ai-professionals .dropdown-content .category-items li {
             display: block;
             width: 100%;
         }
@@ -130,7 +134,7 @@
         }
 
         .dropdown.professionals .dropdown-content .category.production .category-items li {
-            flex: 0 0 calc(50% - 5px); /* 5 içerik sonrası alt satıra geçer */
+            flex: 0 0 calc(50% - 5px);
         }
 
         .dropdown.companies .dropdown-content,
@@ -203,71 +207,6 @@
             border-radius: 2px;
         }
 
-        /* Switch Stili */
-        .ai-switch-container {
-            padding: 5px;
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .ai-switch-label {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .ai-switch {
-            display: none;
-        }
-
-        .ai-switch + span {
-            position: relative;
-            display: inline-block;
-            width: 40px;
-            height: 20px;
-            background-color: #ccc;
-            border-radius: 20px;
-            transition: background-color 0.3s;
-            margin-left: 5px;
-        }
-
-        .ai-switch + span::before {
-            content: '';
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            left: 2px;
-            top: 2px;
-            background-color: #fff;
-            border-radius: 50%;
-            transition: transform 0.3s;
-        }
-
-        .ai-switch:checked + span {
-            background-color: #28A745;
-        }
-
-        .ai-switch:checked + span::before {
-            transform: translateX(20px);
-        }
-
-        .ai-switch-label-text {
-            font-size: 12px;
-            font-weight: 600;
-            color: #007BFF;
-        }
-
-        /* AI seçili öğeler için stil */
-        .ai-enabled .ai-item a {
-            color: #007BFF;
-            font-weight: 600;
-        }
-
-        .ai-enabled .non-ai-item a {
-            color: #ccc;
-            pointer-events: none;
-        }
-
         .main-content {
             margin-top: 50px;
             height: 4000px;
@@ -308,7 +247,8 @@
                 background-color: #fff;
             }
 
-            .dropdown.professionals .dropdown-content {
+            .dropdown.professionals .dropdown-content,
+            .dropdown.ai-professionals .dropdown-content {
                 left: 0;
                 transform: none;
                 width: 100%;
@@ -331,7 +271,8 @@
                 margin-bottom: 5px;
             }
 
-            .dropdown.professionals .dropdown-content .category {
+            .dropdown.professionals .dropdown-content .category,
+            .dropdown.ai-professionals .dropdown-content .category {
                 flex: 1 1 100%;
             }
 
@@ -368,29 +309,22 @@
             <li class="dropdown talents">
                 <button class="dropdown-btn">Yetenekler ▼</button>
                 <div class="dropdown-content">
-                    <div class="ai-switch-container">
-                        <label class="ai-switch-label">
-                            <input type="checkbox" class="ai-switch" onchange="toggleAI(this)">
-                            <span></span>
-                            <span class="ai-switch-label-text">AI - Yapay Zeka Destekli Yetenekler+</span>
-                        </label>
-                    </div>
                     <div class="category">
                         <div class="category-title">Sanatçılar</div>
                         <ul class="category-items">
-                            <li class="non-ai-item"><a href="#">Oyuncu</a></li>
-                            <li class="ai-item"><a href="#">Seslendirme Sanatçısı</a></li>
-                            <li class="ai-item"><a href="#">Müzisyen</a></li>
-                            <li class="ai-item"><a href="#">Vokal</a></li>
-                            <li class="non-ai-item"><a href="#">Dansçı & Koreograf</a></li>
-                            <li class="ai-item"><a href="#">Model</a></li>
+                            <li><a href="#">Oyuncu</a></li>
+                            <li><a href="#">Seslendirme Sanatçısı</a></li>
+                            <li><a href="#">Müzisyen</a></li>
+                            <li><a href="#">Vokal</a></li>
+                            <li><a href="#">Dansçı & Koreograf</a></li>
+                            <li><a href="#">Model</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">İçerik Üreticileri</div>
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
-                            <li class="ai-item"><a href="#">Yayıncı</a></li>
+                            <li><a href="#">Sosyal Medya İçerik Üreticisi</a></li>
+                            <li><a href="#">Yayıncı</a></li>
                         </ul>
                     </div>
                 </div>
@@ -398,94 +332,142 @@
             <li class="dropdown professionals">
                 <button class="dropdown-btn">Profesyoneller ▼</button>
                 <div class="dropdown-content">
-                    <div class="ai-switch-container">
-                        <label class="ai-switch-label">
-                            <input type="checkbox" class="ai-switch" onchange="toggleAI(this)">
-                            <span></span>
-                            <span class="ai-switch-label-text">AI - Yapay Zeka Destekli Profesyoneller+</span>
-                        </label>
-                    </div>
                     <div class="category">
                         <div class="category-title">Yaratıcı ve Dijital Pazarlama</div>
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Yazarlar & Senaristler & Editörler</a></li>
-                            <li class="ai-item"><a href="#">Pazarlama & Dijital & Sosyal Medya Yöneticisi</a></li>
-                            <li class="ai-item"><a href="#">Kreatif Direktör</a></li>
-                            <li class="ai-item"><a href="#">Sanat Yönetmeni</a></li>
-                            <li class="ai-item"><a href="#">Marka Yöneticisi</a></li>
-                            <li class="ai-item"><a href="#">Medya ve Stratejik Planlamacı</a></li>
-                            <li class="non-ai-item"><a href="#">Etkinlik Organizatörü</a></li>
+                            <li><a href="#">Yazarlar & Senaristler & Editörler</a></li>
+                            <li><a href="#">Pazarlama & Dijital & Sosyal Medya Yöneticisi</a></li>
+                            <li><a href="#">Kreatif Direktör</a></li>
+                            <li><a href="#">Sanat Yönetmeni</a></li>
+                            <li><a href="#">Marka Yöneticisi</a></li>
+                            <li><a href="#">Medya ve Stratejik Planlamacı</a></li>
+                            <li><a href="#">Etkinlik Organizatörü</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Görsel Tasarım</div>
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Grafik & Görsel Tasarımcı</a></li>
-                            <li class="ai-item"><a href="#">İllüstratör</a></li>
-                            <li class="ai-item"><a href="#">2D & 3D Mimari Tasarımcı</a></li>
+                            <li><a href="#">Grafik & Görsel Tasarımcı</a></li>
+                            <li><a href="#">İllüstratör</a></li>
+                            <li><a href="#">2D & 3D Mimari Tasarımcı</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Müzik ve Ses</div>
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Müzisyen & Besteci & Aranjör</a></li>
-                            <li class="ai-item"><a href="#">Ses Mühendisi & Tasarımcısı</a></li>
+                            <li><a href="#">Müzisyen & Besteci & Aranjör</a></li>
+                            <li><a href="#">Ses Mühendisi & Tasarımcısı</a></li>
                         </ul>
                     </div>
                     <div class="category production">
                         <div class="category-title">Çekim ve Prodüksiyon</div>
                         <ul class="category-items">
-                            <li class="non-ai-item"><a href="#">Prodüktör & Yapımcı</a></li>
-                            <li class="non-ai-item"><a href="#">Yönetmen & Görüntü Yönetmeni</a></li>
-                            <li class="non-ai-item"><a href="#">Kamera Operatörü & Asistanı</a></li>
-                            <li class="non-ai-item"><a href="#">Fotoğrafçı</a></li>
-                            <li class="non-ai-item"><a href="#">Ses Kayıtçısı & Miksajcısı</a></li>
-                            <li class="non-ai-item"><a href="#">Işıkçı & Işık Tasarımcısı</a></li>
-                            <li class="non-ai-item"><a href="#">Set & Reji & Yönetmen Asistanı</a></li>
-                            <li class="non-ai-item"><a href="#">Set & Lokasyon Amiri</a></li>
-                            <li class="non-ai-item"><a href="#">Set Güvenliği & Ulaşım Yetkilisi</a></li>
-                            <li class="non-ai-item"><a href="#">Sahne & Sanat Tasarımcısı</a></li>
-                            <li class="non-ai-item"><a href="#">Kostüm Tasarımcısı</a></li>
-                            <li class="non-ai-item"><a href="#">Makyaj & Saç Stilisti</a></li>
+                            <li><a href="#">Prodüktör & Yapımcı</a></li>
+                            <li><a href="#">Yönetmen & Görüntü Yönetmeni</a></li>
+                            <li><a href="#">Kamera Operatörü & Asistanı</a></li>
+                            <li><a href="#">Fotoğrafçı</a></li>
+                            <li><a href="#">Ses Kayıtçısı & Miksajcısı</a></li>
+                            <li><a href="#">Işıkçı & Işık Tasarımcısı</a></li>
+                            <li><a href="#">Set & Reji & Yönetmen Asistanı</a></li>
+                            <li><a href="#">Set & Lokasyon Amiri</a></li>
+                            <li><a href="#">Set Güvenliği & Ulaşım Yetkilisi</a></li>
+                            <li><a href="#">Sahne & Sanat Tasarımcısı</a></li>
+                            <li><a href="#">Kostüm Tasarımcısı</a></li>
+                            <li><a href="#">Makyaj & Saç Stilisti</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Post-Prodüksiyon</div>
                         <ul class="category-items">
-                            <li class="non-ai-item"><a href="#">Post-Prodüksiyon Yöneticisi</a></li>
-                            <li class="ai-item"><a href="#">Kurgu Operatörü</a></li>
-                            <li class="ai-item"><a href="#">Görsel Efekt Uzmanı</a></li>
-                            <li class="ai-item"><a href="#">Animatör</a></li>
-                            <li class="ai-item"><a href="#">Renk Düzenleme Uzmanı</a></li>
-                            <li class="ai-item"><a href="#">Ses Efekt & Miksaj Uzmanı</a></li>
+                            <li><a href="#">Post-Prodüksiyon Yöneticisi</a></li>
+                            <li><a href="#">Kurgu Operatörü</a></li>
+                            <li><a href="#">Görsel Efekt Uzmanı</a></li>
+                            <li><a href="#">Animatör</a></li>
+                            <li><a href="#">Renk Düzenleme Uzmanı</a></li>
+                            <li><a href="#">Ses Efekt & Miksaj Uzmanı</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Yazılım ve Geliştirme</div>
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Web Sitesi Yazılımcısı</a></li>
-                            <li class="ai-item"><a href="#">Mobil Uygulama Geliştirici</a></li>
-                            <li class="ai-item"><a href="#">Yapay Zeka Geliştirici</a></li>
-                            <li class="ai-item"><a href="#">Yazılımcı</a></li>
-                            <li class="ai-item"><a href="#">SEO Uzmanları</a></li>
+                            <li><a href="#">Web Sitesi Yazılımcısı</a></li>
+                            <li><a href="#">Mobil Uygulama Geliştirici</a></li>
+                            <li><a href="#">Yapay Zeka Geliştirici</a></li>
+                            <li><a href="#">Yazılımcı</a></li>
+                            <li><a href="#">SEO Uzmanları</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Danışmanlar</div>
                         <ul class="category-items">
-                            <li class="non-ai-item"><a href="#">Hukuki Danışman</a></li>
-                            <li class="non-ai-item"><a href="#">Arabulucu</a></li>
-                            <li class="non-ai-item"><a href="#">Avukat</a></li>
+                            <li><a href="#">Hukuki Danışman</a></li>
+                            <li><a href="#">Arabulucu</a></li>
+                            <li><a href="#">Avukat</a></li>
                         </ul>
                     </div>
                     <div class="category">
                         <div class="category-title">Muhasebe ve Vergi</div>
                         <ul class="category-items">
-                            <li class="non-ai-item"><a href="#">Muhasebe Uzmanı</a></li>
-                            <li class="non-ai-item"><a href="#">Vergi Uzmanı</a></li>
-                            <li class="non-ai-item"><a href="#">Bağımsız Denetmen</a></li>
-                            <li class="non-ai-item"><a href="#">Satın Alma Sorumlusu</a></li>
-                            <li class="non-ai-item"><a href="#">Sponsorluk İlişkileri Sorumlusu</a></li>
+                            <li><a href="#">Muhasebe Uzmanı</a></li>
+                            <li><a href="#">Vergi Uzmanı</a></li>
+                            <li><a href="#">Bağımsız Denetmen</a></li>
+                            <li><a href="#">Satın Alma Sorumlusu</a></li>
+                            <li><a href="#">Sponsorluk İlişkileri Sorumlusu</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown ai-professionals">
+                <button class="dropdown-btn">AI Profesyonelleri ▼</button>
+                <div class="dropdown-content">
+                    <div class="category">
+                        <div class="category-title">Sanat ve İçerik Üretimi</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yapay Zeka Sanatçıları</a></li>
+                            <li><a href="#">Yapay Zeka Seslendirme</a></li>
+                            <li><a href="#">Yapay Zeka Müzik ve Vokal</a></li>
+                            <li><a href="#">Yapay Zeka Ses Sentezi & Klonlama</a></li>
+                            <li><a href="#">Yapay Zeka İçerik Üreticisi ve Yayıncı</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Tasarım ve Üretim</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yapay Zeka Tasarımcıları</a></li>
+                            <li><a href="#">Yapay Zeka Görsel Tasarım</a></li>
+                            <li><a href="#">Yapay Zeka Grafik Düzenleme</a></li>
+                            <li><a href="#">Midjourney & Dall-E Artistleri</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Pazarlama ve Reklam</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yapay Zeka Pazarlama Uzmanları</a></li>
+                            <li><a href="#">Yapay Zeka Çeviri & İçerik Düzenleme</a></li>
+                            <li><a href="#">Yapay Zeka Pazarlama Yönetimi</a></li>
+                            <li><a href="#">Yapay Zeka Stratejik Planlama</a></li>
+                            <li><a href="#">Yapay Zeka Marka Oluşturma</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Prodüksiyon ve Post</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yapay Zeka Video Üreticileri</a></li>
+                            <li><a href="#">Yapay Zeka VFX Uzmanı</a></li>
+                            <li><a href="#">Yapay Zeka Video Düzenleme</a></li>
+                            <li><a href="#">Yapay Zeka Ses Efekt Düzenleme</a></li>
+                        </ul>
+                    </div>
+                    <div class="category">
+                        <div class="category-title">Yazılım ve Teknoloji</div>
+                        <ul class="category-items">
+                            <li><a href="#">Yapay Zeka Yazılım Uzmanları</a></li>
+                            <li><a href="#">Yapay Zeka Website</a></li>
+                            <li><a href="#">Yapay Zeka Tasarım ve Yazılım</a></li>
+                            <li><a href="#">Yapay Zeka Uygulama Geliştirme</a></li>
+                            <li><a href="#">Yapay Zeka SEO</a></li>
+                            <li><a href="#">Yapay Zeka Makine Öğrenimi</a></li>
+                            <li><a href="#">Yapay Zeka Entegrasyonu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -493,28 +475,21 @@
             <li class="dropdown companies">
                 <button class="dropdown-btn">Şirketler ▼</button>
                 <div class="dropdown-content">
-                    <div class="ai-switch-container">
-                        <label class="ai-switch-label">
-                            <input type="checkbox" class="ai-switch" onchange="toggleAI(this)">
-                            <span></span>
-                            <span class="ai-switch-label-text">AI - Yapay Zeka Destekli Şirketler+</span>
-                        </label>
-                    </div>
                     <div class="category">
                         <ul class="category-items">
-                            <li class="ai-item"><a href="#">Yapım & Prodüksiyon Şirketleri</a></li>
-                            <li class="non-ai-item"><a href="#">Cast Ajansları</a></li>
-                            <li class="non-ai-item"><a href="#">Oyuncu & Model Menajerlik Şirketleri</a></li>
-                            <li class="ai-item"><a href="#">Ses & Dublaj Stüdyoları</a></li>
-                            <li class="ai-item"><a href="#">Reklam & Dijital & PR & Event Ajansları</a></li>
-                            <li class="non-ai-item"><a href="#">Sanat ve Eğitim Kurumları</a></li>
-                            <li class="ai-item"><a href="#">Oyun Stüdyoları</a></li>
-                            <li class="ai-item"><a href="#">Post-Prodüksiyon Şirketleri</a></li>
-                            <li class="non-ai-item"><a href="#">TV - Radyo ve Dijital Kanallar</a></li>
-                            <li class="non-ai-item"><a href="#">Ekipman Kiralama Şirketleri</a></li>
-                            <li class="non-ai-item"><a href="#">Fotoğraf & Prodüksiyon Stüdyoları - Platolar</a></li>
-                            <li class="non-ai-item"><a href="#">Basılı Yayın Şirketleri</a></li>
-                            <li class="ai-item"><a href="#">Medya Satın Alma Şirketleri</a></li>
+                            <li><a href="#">Yapım & Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">Cast Ajansları</a></li>
+                            <li><a href="#">Oyuncu & Model Menajerlik Şirketleri</a></li>
+                            <li><a href="#">Ses & Dublaj Stüdyoları</a></li>
+                            <li><a href="#">Reklam & Dijital & PR & Event Ajansları</a></li>
+                            <li><a href="#">Sanat ve Eğitim Kurumları</a></li>
+                            <li><a href="#">Oyun Stüdyoları</a></li>
+                            <li><a href="#">Post-Prodüksiyon Şirketleri</a></li>
+                            <li><a href="#">TV - Radyo ve Dijital Kanallar</a></li>
+                            <li><a href="#">Ekipman Kiralama Şirketleri</a></li>
+                            <li><a href="#">Fotoğraf & Prodüksiyon Stüdyoları - Platolar</a></li>
+                            <li><a href="#">Basılı Yayın Şirketleri</a></li>
+                            <li><a href="#">Medya Satın Alma Şirketleri</a></li>
                         </ul>
                     </div>
                 </div>
@@ -566,16 +541,5 @@
 
     <!-- Ana içerik (4000px boşluk) -->
     <div class="main-content"></div>
-
-    <script>
-        function toggleAI(checkbox) {
-            const dropdownContent = checkbox.closest('.dropdown-content');
-            if (checkbox.checked) {
-                dropdownContent.classList.add('ai-enabled');
-            } else {
-                dropdownContent.classList.remove('ai-enabled');
-            }
-        }
-    </script>
 </body>
 </html>
