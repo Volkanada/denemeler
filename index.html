@@ -18,16 +18,16 @@
         }
 
         .logo {
-    display: flex;
-    align-items: center;
-    padding: 5px;
-}
+            display: flex;
+            align-items: center;
+            padding: 5px;
+        }
 
-.logo img {
-    height: 15px;
-    width: auto;
-    filter: brightness(0) invert(1);
-}
+        .logo img {
+            height: 15px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
 
         .navbar {
             background-color: #43d742;
@@ -105,7 +105,7 @@
             border-radius: 4px;
             flex-wrap: wrap;
             gap: 5px;
-            overflow: visible;
+            overflow: visible; /* Tooltip taşabilir */
         }
 
         .dropdown.professionals .dropdown-content {
@@ -114,7 +114,7 @@
             max-width: calc(100vw - 20px);
             transform: none;
             display: none;
-            flex-direction: row;
+            flex-direction: row; /* 2 sütun için */
             flex-wrap: wrap;
             align-items: flex-start;
             overflow-x: hidden;
@@ -134,7 +134,7 @@
         }
 
         .dropdown.professionals .dropdown-content .category {
-            width: calc(33.33% - 10px);
+            width: calc(50% - 10px); /* 2 sütun için %50 genişlik */
             flex: none;
         }
 
@@ -144,7 +144,7 @@
         }
 
         .dropdown.professionals .dropdown-content .category.production {
-            width: calc(66.66% - 10px);
+            width: calc(50% - 10px); /* Production da 2 sütunda kalacak */
         }
 
         .dropdown.professionals .dropdown-content .category-items,
@@ -159,13 +159,12 @@
         }
 
         .dropdown.professionals .dropdown-content .category.production .category-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0px;
+            display: block; /* Production için flex yerine block */
         }
 
         .dropdown.professionals .dropdown-content .category.production .category-items li {
-            flex: 0 0 calc(50% - 5px);
+            flex: none;
+            width: 100%; /* 2 sütunlu düzen için flex kaldırıldı */
         }
 
         .dropdown.companies .dropdown-content,
@@ -245,36 +244,32 @@
         }
 
         [data-tooltip] {
-    position: relative;
-}
+            position: relative;
+        }
 
-[data-tooltip]:hover::after {
-    content: attr(data-tooltip);
-    position: fixed; /* Menü çerçevesinden bağımsız */
-    left: var(--tooltip-left); /* JavaScript ile ayarlanacak */
-    top: var(--tooltip-top); /* JavaScript ile dinamik ayarlanacak */
-    transform: translateX(-80%);
+        [data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            white-space: normal;
+            max-width: 200px;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+            text-align: center;
+        }
 
-    background-color: rgba(51, 51, 51, 0.8);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 10px;
-    white-space: nowrap;
-    z-index: 100; /* Menüden daha üstte olsun */
-    opacity: 0;
-    transition: opacity 0.2s ease;
-    pointer-events: none;
-}
-
-[data-tooltip]:hover::after {
-    opacity: 1;
-}
-
-/* Menü kutusunun tooltip'i kesmesini engelle */
-.dropdown-content {
-    overflow: visible; /* Tooltip taşabilir */
-}
+        [data-tooltip]:hover::after {
+            opacity: 1;
+        }
 
         @media (max-width: 768px) {
             .navbar {
@@ -283,6 +278,7 @@
                 border-radius: 0;
                 padding: 3px;
                 flex-direction: column;
+                overflow: visible;
             }
 
             .navbar ul {
@@ -301,22 +297,26 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                max-height: calc(100vh - 40px);
+                max-height: calc(100vh - 60px);
                 padding: 3px;
                 box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
                 border-radius: 0;
                 display: none;
                 background-color: #fff;
-                
-               
+                overflow-y: auto;
+                overflow-x: hidden;
+                z-index: 1;
             }
 
             .dropdown.professionals .dropdown-content {
                 left: 0;
                 transform: none;
                 width: 100%;
-                flex-direction: column;
+                flex-direction: row; /* Mobilde de 2 sütun */
+                flex-wrap: wrap;
                 overflow-x: hidden;
+                overflow-y: auto;
+                gap: 10px;
             }
 
             .dropdown.ai-professionals .dropdown-content {
@@ -324,11 +324,12 @@
                 transform: none;
                 width: 100%;
                 overflow-x: hidden;
+                overflow-y: auto;
             }
 
             .dropdown.professionals .dropdown-content .category,
             .dropdown.professionals .dropdown-content .category.production {
-                width: 100%;
+                width: calc(50% - 10px); /* Mobilde de 2 sütun */
             }
 
             .dropdown.companies .dropdown-content,
@@ -346,7 +347,7 @@
 
             .dropdown.professionals .dropdown-content .category,
             .dropdown.ai-professionals .dropdown-content .category {
-                flex: 1 1 100%;
+                flex: none; /* Flex yerine sabit genişlik */
             }
 
             .dropdown.professionals .dropdown-content .category.production .category-items {
@@ -366,59 +367,31 @@
 </head>
 
 <script>
-
     document.addEventListener("DOMContentLoaded", function() {
-    const dropdowns = document.querySelectorAll(".dropdown");
-    dropdowns.forEach(dropdown => {
-        const btn = dropdown.querySelector(".dropdown-btn");
-        const content = dropdown.querySelector(".dropdown-content");
+        const dropdowns = document.querySelectorAll(".dropdown");
+        dropdowns.forEach(dropdown => {
+            const btn = dropdown.querySelector(".dropdown-btn");
+            const content = dropdown.querySelector(".dropdown-content");
 
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-            dropdowns.forEach(d => {
-                if (d !== dropdown) {
-                    d.querySelector(".dropdown-content").style.display = "none";
-                }
+            btn.addEventListener("click", function(e) {
+                e.preventDefault();
+                dropdowns.forEach(d => {
+                    if (d !== dropdown) {
+                        d.querySelector(".dropdown-content").style.display = "none";
+                    }
+                });
+                content.style.display = content.style.display === "block" ? "none" : "block";
             });
-            content.style.display = content.style.display === "flex" ? "none" : "flex";
         });
-    });
 
-    document.addEventListener("click", function(e) {
-        if (!e.target.closest(".dropdown")) {
-            dropdowns.forEach(dropdown => {
-                dropdown.querySelector(".dropdown-content").style.display = "none";
-            });
-        }
-    });
-
-    document.querySelectorAll("[data-tooltip]").forEach(item => {
-        item.addEventListener("mouseenter", function() {
-            const rect = item.getBoundingClientRect();
-            const dropdownContent = item.closest(".dropdown-content");
-            if (!dropdownContent) return;
-
-            const contentRect = dropdownContent.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            const tooltipHeight = 2;
-
-            let topPos;
-            const spaceBelow = windowHeight + 20;
-            const spaceAbove = 1;
-
-            if (spaceBelow < tooltipHeight + 5 && spaceAbove > tooltipHeight + 5) {
-                topPos = rect.top + window.scrollY - tooltipHeight - 15;
-            } else {
-                topPos = rect.bottom + window.scrollY + 1;
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest(".dropdown")) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.querySelector(".dropdown-content").style.display = "none";
+                });
             }
-
-            const leftPos = rect.left + rect.width / 2;
-
-            item.style.setProperty("--tooltip-left", `${leftPos}px`);
-            item.style.setProperty("--tooltip-top", `${topPos}px`);
         });
     });
-});
 </script>
 
 <body>
@@ -445,7 +418,6 @@
                         <ul class="category-items">
                             <li><a href="#" data-tooltip="Kamera Önü, Sunucu, Sahne ve Tiyatro Oyuncusu, Figüran">Oyuncu</a></li>
                             <li><a href="#" data-tooltip="Dublaj ve Mikrofon Oyuncusu">Seslendirme Sanatçısı</a></li>
-                           
                             <li><a href="#" data-tooltip="Performans Sanatçısı, Balerin, Balet">Dansçı & Koreograf</a></li>
                             <li><a href="#" data-tooltip="Manken, Fotomodel, El Mankeni, Fuar Host-Hostesi">Model</a></li>
                         </ul>
@@ -457,7 +429,6 @@
                             <li><a href="#" data-tooltip="Youtube, Twitch, Kick Yayıncısı">Yayıncı</a></li>
                         </ul>
                     </div>
-
                     <div class="category">
                         <div class="category-title">Yaratıcı ve Dijital Pazarlama</div>
                         <ul class="category-items">
@@ -487,7 +458,7 @@
                             <li><a href="#" data-tooltip="Ses, Efekt, Stüdyo, Akustik ve Ses Teknolojileri Uzmanı">Ses Mühendisi & Tasarımcısı</a></li>
                         </ul>
                     </div>
-                            <div class="category">
+                    <div class="category">
                         <div class="category-title">Danışmanlar & Koçlar</div>
                         <ul class="category-items">
                             <li><a href="#" data-tooltip="Sahne ve Stüdyo Oyuncu ve Sanatçı Koçu">Oyuncu Koçu</a></li>
@@ -507,7 +478,6 @@
                             <li><a href="#" data-tooltip="Sinematograf, DOP, Görsel ve Işık Yönetmeni">Görüntü Yönetmeni</a></li>
                             <li><a href="#" data-tooltip="Yardımcı Yönetmen, Reji Asistanı, Ekip Koordinatörü">Set & Reji & Yönetmen Asistanı</a></li>
                             <li><a href="#" data-tooltip="Oyuncu ve Figürasyon Yöneticisi, Oyuncu Seçme Direktörü">Cast Direktörü, Menajer</a></li>
-
                             <li><a href="#" data-tooltip="Kameraman, Focus Puller, Teknisyen ve Görüntü Ekibi ">Kamera Operatörü & Asistanı</a></li>
                             <li><a href="#" data-tooltip="Set, Stil, Moda ve Stüdyo Fotoğrafçısı">Fotoğrafçı</a></li>
                             <li><a href="#" data-tooltip="Boom ve Saha Ses Operatörü, Kayıtçı ve Ses Yöneticisi">Ses Kayıtçısı & Miksajcısı</a></li>
@@ -540,7 +510,6 @@
                             <li><a href="#" data-tooltip="Arama Motoru Optimizasyon Uzmanı, İçerik ve SEO Analisti">SEO Uzmanları</a></li>
                         </ul>
                     </div>
-            
                     <div class="category">
                         <div class="category-title">Finans ve Vergi</div>
                         <ul class="category-items">
